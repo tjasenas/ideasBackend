@@ -5,6 +5,7 @@ const morgan = require("morgan");
 
 //Route imports
 const { usersRouter } = require("./router/usersRouter");
+const { ideasRouter } = require("./router/ideasRouter");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/", usersRouter);
+app.use("/", ideasRouter);
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Runing on port " + process.env.APP_PORT);
