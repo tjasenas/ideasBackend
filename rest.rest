@@ -1,0 +1,26 @@
+// Get all ideas
+GET http://localhost:3000/api/ideas
+
+###
+
+// Login
+POST http://localhost:3000/api/login
+content-type: application/json
+
+{
+    "email": "tomas@gmail.com",
+    "password": "123456"
+}
+
+
+###
+
+//Register
+POST http://localhost:3000/api/register
+content-type: application/json
+
+{
+    "name": "jonaitis",
+    "email": "jonaitssi@gmail.com",
+    "password": "123456"
+}
