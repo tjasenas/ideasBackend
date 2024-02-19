@@ -11,6 +11,9 @@ content-type: application/json
 
 // Get all ideas for admin
 GET http://localhost:3000/api/admin/ideas
+# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvbWFzQGdtYWlsLmNvbSIsInN1YiI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzA4MzMzNjI0LCJleHAiOjE3MDgzMzcyMjR9.YmYraq7pMt7xyJyB4avQxW7xwxemQYfBFdE_WSbmRUo
+
+
 
 ###
 
@@ -40,3 +43,20 @@ PUT http://localhost:3000/api/admin/acceptIdea/2
 
 // Delete idea
 DELETE http://localhost:3000/api/admin/ideas/2
+
+
+###
+
+post http://localhost:3000/api/donate
+content-type: application/json
+
+{
+    "person": "tomas",
+    "amount": 50,
+    "ideaId": 1
+}
+
+###
+
+GET http://localhost:3000/api/donated/1
+

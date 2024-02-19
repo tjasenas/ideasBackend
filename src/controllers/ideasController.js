@@ -69,3 +69,35 @@ module.exports.addIdea = async (req, res) => {
     console.log(error);
   }
 };
+module.exports.donate = async (req, res) => {
+  try {
+    const { person, amount, ideaId } = req.body;
+
+    const sql = "INSERT INTO donated (person, amount, ideas_id ) VALUES (?,?,?)";
+    const [rows, error] = await dataFetch(sql, [person, amount, ideaId]);
+
+    if (error) {
+      console.log(error);
+      res.status(400).json({ msg: "Nepavyko paaukoti, bandykite vėliau" });
+      return;
+    }
+
+    res.status(201).json({ msg: "Sekmingai paaukojote!" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports.donateList = async (req, res) => {
+  try {
+    const { ideaId } = req.params;
+    const sql = "SELECT * FROM donated WHERE ideas_id=?";
+    const [rows, error] = await dataFetch(sql, [ideaId]);
+    if (error) {
+      res.json({ msg: "Įvyko klaida!" });
+    }
+
+    res.json({ rows });
+  } catch (error) {
+    console.log(error);
+  }
+};
