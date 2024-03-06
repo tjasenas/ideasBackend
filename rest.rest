@@ -22,7 +22,7 @@ GET http://localhost:3000/api/ideas
 
 ###
 
-// Get accepted ideas
+// add ideas
 post http://localhost:3000/api/addIdea
 content-type: application/json
 
@@ -42,7 +42,7 @@ PUT http://localhost:3000/api/admin/acceptIdea/2
 ###
 
 // Delete idea
-DELETE http://localhost:3000/api/admin/ideas/2
+DELETE http://localhost:3000/api/admin/ideas/5
 
 
 ###
@@ -51,12 +51,13 @@ post http://localhost:3000/api/donate
 content-type: application/json
 
 {
-    "person": "tomas",
-    "amount": 50,
-    "ideaId": 1
+    "person": "Tomas",
+    "amount": 5,
+    "ideaId": 9
 }
 
 ###
 
-GET http://localhost:3000/api/donated/1
+GET http://localhost:3000/api/donated/9
+
 

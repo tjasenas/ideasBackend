@@ -82,6 +82,26 @@ module.exports.donate = async (req, res) => {
       return;
     }
 
+    const sql2 = "SELECT * FROM ideas WHERE id=?";
+    const [rows2, error2] = await dataFetch(sql2, [ideaId]);
+
+    if (error2) {
+      console.log(error);
+      res.status(400).json({ msg: "Nepavyko paaukoti, bandykite vėliau" });
+      return;
+    }
+
+    const newAmount = +rows2[0].collected + amount;
+
+    const sql3 = "UPDATE ideas SET  collected=? WHERE id=?";
+    const [rows3, error3] = await dataFetch(sql3, [newAmount, ideaId]);
+
+    if (error3) {
+      console.log(error);
+      res.status(400).json({ msg: "Nepavyko paaukoti, bandykite vėliau" });
+      return;
+    }
+
     res.status(201).json({ msg: "Sekmingai paaukojote!" });
   } catch (error) {
     console.log(error);
